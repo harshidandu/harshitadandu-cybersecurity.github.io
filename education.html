@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Education Section</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: white;
+      padding: 40px 20px;
+    }
+
+    #education {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 150px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .education-item {
+      width: 500px; /* Adjusted width for larger images */
+      min-height: 800px; /* Increased height to fit larger images */
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .animated-img {
+      width: 100%; /* Make sure the images take up the full width of their container */
+      height: 650px; /* Increased height for larger images */
+      object-fit: cover; /* Ensure the image covers the space */
+      display: block;
+      animation: float3d 6s ease-in-out infinite;
+      transform-origin: center;
+      backface-visibility: hidden;
+    }
+
+    .charles-sturt-img {
+      height: 500px; /* Make the Charles Sturt image smaller */
+    }
+
+    @keyframes float3d {
+      0% {
+        transform: rotateX(0deg) rotateY(0deg) translateY(0);
+      }
+      50% {
+        transform: rotateX(5deg) rotateY(5deg) translateY(-35px);
+      }
+      100% {
+        transform: rotateX(0deg) rotateY(0deg) translateY(0);
+      }
+    }
+
+    .edu-info {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .offset-davis {
+      top: 600px; /* Adjusted position based on new image height */
+    }
+
+    .offset-csu {
+      top: 590px; /* Adjusted position based on new image height */
+    }
+
+    .edu-text {
+      margin-bottom: 0;
+    }
+
+    .edu-info h3 {
+      font-size: 1.5rem; /* Increased font size for better visibility */
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 16px;
+    }
+
+    .school-name,
+    .grad-date {
+      font-size: 1.1rem; /* Increased text size */
+      color: rgb(85, 85, 85);
+      margin: 4px 0;
+    }
+
+    .view-button {
+      margin-top: 16px;
+      background-color: #a8c686;
+      color: white;
+      border: none;
+      padding: 12px 24px; /* Increased padding */
+      font-size: 1rem; /* Increased font size */
+      font-weight: 500;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: fit-content;
+      align-self: center;
+    }
+
+    .view-button:hover {
+      background-color: #94b472;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 40px; /* Increased padding */
+      border-radius: 10px;
+      max-width: 600px; /* Increased modal width */
+      width: 90%;
+      text-align: center;
+      position: relative;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-content p {
+      font-size: 1rem; /* Larger text size */
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+    
+       
+      
+
+
+
+
+
+
+
+
+
+  <section id="education">
+    <div class="education-item">
+      <img src="./assets/resized_image_1.png" alt="UC Davis Campus" class="animated-img" />
+      <div class="edu-info offset-davis">
+        <div class="edu-text">
+          <h3>Bachelor of Computer Science</h3>
+          <p class="school-name">University of California, Davis</p>
+          <p class="grad-date">🎓 Graduated: August 2023</p>
+        </div>
+        <button class="view-button" data-target="modal-ucd">Related Courses</button>
+      </div>
+    </div>
+
+    <div class="education-item">
+      <img src="./assets/resized_image_2.png" alt="Charles Sturt Campus" class="animated-img charles-sturt-img" />
+      <div class="edu-info offset-csu">
+        <div class="edu-text">
+          <h3>Masters in Cyber Security</h3>
+          <p class="school-name">Charles Sturt University</p>
+          <p class="grad-date">🎓 Expected: 2026</p>
+        </div>
+        <button class="view-button" data-target="modal-csu">Related Courses</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal" id="modal-ucd">
+    <div class="modal-content">
+      <span class="close-btn" data-close>&times;</span>
+      <p>Data Structures</p>
+      <p>Operating Systems & System Programming</p>
+      <p>Algorithm Design & Analysis</p>
+      <p>Web Programming</p>
+      <p>Human-Computer Interaction</p>
+      <p>Theory of Computation</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-csu">
+    <div class="modal-content">
+      <span class="close-btn" data-close>&times;</span>
+      <p>Cloud Privacy and Security</p>
+      <p>Hacking Countermeasures</p>
+      <p>Pen Testing</p>
+      <p>Incident Response</p>
+      <p>Digital Forensics</p>
+      <p>Cloud Computing</p>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.view-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.getAttribute('data-target');
+        document.getElementById(target).style.display = 'flex';
+      });
+    });
+
+    document.querySelectorAll('[data-close]').forEach(closeBtn => {
+      closeBtn.addEventListener('click', () => {
+        closeBtn.closest('.modal').style.display = 'none';
+      });
+    });
+
+    window.addEventListener('click', e => {
+      if (e.target.classList.contains('modal')) {
+        e.target.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
+
+    
+

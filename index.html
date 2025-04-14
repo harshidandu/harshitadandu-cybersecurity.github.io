@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta and Title Section -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+
+  <body>
+    <!-- ========== Desktop Navigation ========== -->
+    <nav id="desktop-nav">
+      <div class="logo">Harshita Dandu</div>
+      <div>
+        <ul class="nav-links">
+          <!-- Navigation links for Desktop view; verify anchor targets -->
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#certificates">Certificates</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ========== Hamburger Navigation (Mobile/Responsive) ========== -->
+    <nav id="hamburger-nav">
+      <div class="logo">Harshita Dandu</div>
+      <div class="hamburger-menu">
+        <!-- Hamburger icon triggers toggleMenu() in script.js -->
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <!-- Navigation links for Hamburger menu -->
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#education" onclick="toggleMenu()">Education</a></li>
+          <li><a href="#certificates" onclick="toggleMenu()">Certificates</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ========== Profile Section ========== -->
+    <section id="profile">
+      <!-- Container for Profile Picture -->
+      <div class="section__pic-container">
+        <img 
+          src="./assets/profile studio gibhli.png" 
+          alt="John Doe profile picture" 
+        />
+      </div>
+
+      <!-- Container for Profile Text -->
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Harshita Dandu</h1>
+        <p class="section__text__p2">SOC Analyst</p>
+
+        <!-- Button Container for Download CV and Contact Info -->
+        <div class="btn-container">
+          <button 
+            class="btn btn-color-2"
+            onclick="window.open('./assets/resume-example.pdf')"
+          >
+            Download CV
+          </button>
+          <button 
+            class="btn btn-color-1" 
+            onclick="location.href='./#contact'"
+          >
+            Contact Info
+          </button>
+        </div>
+
+        <!-- Social Media Icons -->
+        <div id="socials-container">
+          <img 
+            src="./assets/linkedin.png" 
+            alt="My LinkedIn profile" 
+            class="icon"
+            onclick="location.href='https://www.linkedin.com/in/harshitadandu/'" 
+          />
+          <img 
+            src="./assets/github.png" 
+            alt="My Github profile" 
+            class="icon"
+            onclick="location.href='https://github.com/harshidandu/HarshitaDandu_Cyber_Security-/tree/main'" 
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== About Section ========== -->
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title" style="margin-bottom: 20px;">About Me</h1>
+
+      <!-- Embedding external HTML for About Me details -->
+      <iframe 
+        src="aboutme.html" 
+        title="Skills iframe" 
+        width="40%" 
+        height="400px" 
+        style="border: none; display: block; margin: 20px auto 0 auto;" 
+        frameborder="0">
+      </iframe>
+
+      <!-- Arrow Icon to Navigate to Education Section -->
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        onclick="location.href='#education'"
+        style="position: absolute; right: -5rem; bottom: 17rem; height: 2rem; cursor: pointer;"
+      />
+    </section>
+
+    <!-- ========== Education Section ========== -->
+    <section id="education" style="position: relative;">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Education</h1>
+
+      <!-- Embedding external HTML for Education details -->
+      <iframe 
+        src="education.html"
+        width="100%" 
+        height="900" 
+        style="border: none; margin-top: -1rem;" 
+        title="Education Section">
+      </iframe>
+
+      <!-- Arrow Icon to Navigate to Certificates Section -->
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        onclick="location.href='#certificates'"
+        style="position: absolute; right: -5rem; bottom: 13rem; height: 2rem; cursor: pointer;"
+      />
+    </section>
+
+    <!-- ========== Certificates Section ========== -->
+    <section id="certificates">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Certificates</h1>
+
+      <!-- Inline Styles Specific to Certificates Section -->
+      <style>
+        /* Style adjustments for the Certificates section */
+        #certificates {
+          position: relative;
+          padding: 2rem 2rem 5rem 2rem;
+        }
+        #certificates iframe {
+          width: 90%;
+          height: 70vh; /* 70% of viewport height */
+          margin: 0 auto;
+          max-width: none;
+          border: none;
+          display: block;
+          margin-top: 2rem;
+        }
+      </style>
+
+      <!-- Embedding external HTML for Certificates -->
+      <iframe 
+        src="certs.html" 
+        title="Certificates iframe">
+      </iframe>
+
+      <!-- Arrow Icon to Navigate to Projects Section -->
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        onclick="location.href='#projects'"
+        style="position: absolute; right: -5rem; bottom: 10rem; height: 2rem; cursor: pointer;"
+      />
+    </section>
+
+    <!-- ========== Projects Section ========== -->
+    <section id="projects">
+      <p class="section__text__p1">Browse My Recent</p>
+      <h1 class="title">Projects</h1>
+
+      <!-- Inline Styles Specific to Projects Section -->
+      <style>
+        /* Style adjustments for the Projects section */
+        #projects {
+          position: relative;
+          padding-bottom: 80px;  /* Extra bottom padding for spacing */
+        }
+        /* General iframe styling for the Projects iframe */
+        iframe {
+          width: 100%;
+          height: 1000px;
+          border: none;
+          margin-top: -35px;
+        }
+      </style>
+
+      <!-- Embedding external HTML for Projects -->
+      <iframe 
+        src="projects.html" 
+        title="Projects iframe" 
+        frameborder="0">
+      </iframe>
+
+      <!-- Arrow Icon to Navigate to Skills Section -->
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        onclick="location.href='#skills'"
+        style="position: absolute; right: -5rem; bottom: 17rem; height: 2rem; cursor: pointer;"
+      />
+    </section>
+
+    <!-- ========== Skills Section ========== -->
+    <section id="skills">
+      <p class="section__text__p1">Browse My</p>
+      <h1 class="title">Skills</h1>
+
+      <!-- Inline Styles Specific to Skills Section -->
+      <style>
+        /* Style adjustments for the Skills section */
+        #skills {
+          position: relative;
+          padding: 2rem;
+        }
+        #skills iframe {
+          width: 100%;
+          height: 100vh;
+          max-width: none;
+          margin: 0 auto;
+          border: none;
+          display: block;
+          background-color: transparent;
+        }
+      </style>
+
+      <!-- Embedding external HTML for Skills -->
+      <iframe 
+        src="skills.html" 
+        title="Skills iframe">
+      </iframe>
+
+      <!-- Arrow Icon to Navigate to Contact Section -->
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        onclick="location.href='#contact'"
+        style="position: absolute; right: -5rem; bottom: 17rem; height: 2rem; cursor: pointer;"
+      />
+    </section>
+
+    <!-- ========== Contact Section ========== -->
+    <section id="contact">
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+
+      <!-- Contact Information -->
+      <div class="contact-info-upper-container">
+        <!-- Email Contact -->
+        <div class="contact-info-container">
+          <img 
+            src="./assets/email.png" 
+            alt="Email icon" 
+            class="icon contact-icon email-icon" 
+          />
+          <p>
+            <a href="mailto:examplemail@gmail.com">
+              harshitasivanid@gmail.com
+            </a>
+          </p>
+        </div>
+
+        <!-- LinkedIn Contact -->
+        <div class="contact-info-container">
+          <img 
+            src="./assets/linkedin.png" 
+            alt="LinkedIn icon" 
+            class="icon contact-icon" 
+          />
+          <p>
+            <a href="https://www.linkedin.com/in/harshitadandu/">LinkedIn</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Footer Navigation ========== -->
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <!-- Footer navigation links replicating main navigation -->
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </footer>
+
+    <!-- ========== JavaScript File ========== -->
+    <script src="script.js"></script>
+  </body>
+</html>

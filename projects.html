@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3 Cards per Row - Flip + Muted Green Glow</title>
+  <style>
+    /* Reset defaults */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: transparent;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 3px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 350px);
+      gap: 20px;
+      justify-content: center;
+      margin-top: 50px; /* Push the grid down from the top */
+    }
+
+    /* The container holds perspective but no hover styles */
+    .card {
+      height: 380px;
+      perspective: 1000px;
+      overflow: visible; /* Allow flipped card to show outside the container */
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    /* Apply border and hover effect directly on the card element (.card-inner) */
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border: 2px solid gainsboro;  /* The border is now on the card itself */
+      border-radius: 10px;
+      transition: transform 0.8s, box-shadow 0.4s ease;  /* Include box-shadow in transition */
+      transform-style: preserve-3d;
+    }
+
+    /* Hover effect on the card itself */
+    .card-inner:hover {
+      transform: translateY(-10px);
+      animation: smoothPulse 1s ease-out;
+      box-shadow: 0 0 20px rgba(143, 188, 143, 0.8);
+    }
+
+    @keyframes smoothPulse {
+      0% {
+        box-shadow: 0 0 5px rgba(143, 188, 143, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(143, 188, 143, 1);
+      }
+      100% {
+        box-shadow: 0 0 10px rgba(143, 188, 143, 0.7);
+      }
+    }
+
+    .card-inner.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      backface-visibility: hidden;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-front {
+      background: #fff;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      color: #333;
+    }
+
+    /* Card back colors */
+    .card1 .card-back { background: #8FBC8F; }
+    .card2 .card-back { background: #B0C4DE; }
+    .card3 .card-back { background: #D2B48C; }
+    .card4 .card-back { background: #FFE4B5; }
+    .card5 .card-back { background: #E0BBE4; }
+    .card6 .card-back { background: #C1CDC1; }
+
+    img {
+      width: 100%;
+      height: 70%;
+      border-radius: 5px;
+    }
+
+    h2 {
+      margin: 10px 0;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: -10px; 
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .btn:hover {
+      opacity: 0.8;
+    }
+
+    a.btn {
+      background: #333;
+      color: #fff;
+    }
+
+    button.btn {
+      background: #555;
+      color: #fff;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 960px) {
+      .container {
+        grid-template-columns: repeat(2, 300px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      .card {
+        width: 90%;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Card 1 -->
+    <div class="card card1">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="./assets/SOAREDRresized.png" alt="Card Image" />
+          <h2>SOAR EDR Integration</h2>
+          <div class="buttons">
+            <a href="https://github.com/harshidandu/HarshitaDandu_Cyber_Security-/blob/main/SOAR-EDR-Project.md" class="btn" target="_blank">Github</a>
+            <button class="btn details-btn">Details</button>
+          </div>
+        </div>
+        <div class="card-back">
+          <p>Built a complete detection and response workflow integrating Lima Charlie EDR, Tines SOAR platform, and Slack for real-time threat alerts and automated endpoint isolation. Developed custom detection rules, automated decision workflows, and tested dynamic playbooks simulating real-world credential access threats.
+
+          </p>
+          <div class="buttons">
+            <a href="https://github.com/harshidandu/HarshitaDandu_Cyber_Security-/blob/main/SOAR-EDR-Project.md" class="btn" target="_blank">Github</a>
+            <button class="btn back-btn">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card card2">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="./assets/automationresized.png" alt="Card Image" />
+          <h2>SOC Automation Lab</h2>
+          <div class="buttons">
+            <a href="https://github.com/harshidandu/HarshitaDandu_Cyber_Security-/blob/main/SOC-Automation-Lab-Project.md" class="btn" target="_blank">Github</a>
+            <button class="btn details-btn">Details</button>
+          </div>
+        </div>
+        <div class="card-back">
+          <p>Designed and deployed a fully automated Security Operations Center (SOC) lab by integrating SIEM (Wazuh), SOAR (Shuffle), and case management (TheHive), enabling real-time threat detection, enrichment, incident creation, analyst notifications, and active response workflows.</p>
+          <div class="buttons">
+            <a href="https://github.com/harshidandu/HarshitaDandu_Cyber_Security-/blob/main/SOC-Automation-Lab-Project.md" class="btn" target="_blank">Github</a>
+            <button class="btn back-btn">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card card3">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="./assets/project3resized.png" alt="Card Image" />
+          <h2>Active Directory Home Lab</h2>
+          <div class="buttons">
+            <a href="https://github.com/harshidandu/HarshitaDandu_Cyber_Security-/blob/main/Active-Directory-Project.md" class="btn" target="_blank">Github</a>
+            <button class="btn details-btn">Details</button>
+          </div>
+        </div>
+        <div class="card-back">
+          <p>Deployed a full Active Directory environment with Windows Server, Windows 10, Ubuntu (Splunk), and Kali Linux. Built and attacked the domain using Crowbar and Atomic Red Team, while capturing and analyzing telemetry with Sysmon and Splunk. Developed skills in detection engineering, attack simulation, and security operations monitoring.
+          </p>
+          <div class="buttons">
+            <a href="https://github.com/harshidandu/HarshitaDandu_Cyber_Security-/blob/main/Active-Directory-Project.md" class="btn" target="_blank">Github</a>
+            <button class="btn back-btn">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card card4">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="./assets/project4homelabresized.png" alt="Card Image" />
+          <h2>Basic Homelab</h2>
+          <div class="buttons">
+            <a href="https://github.com/harshidandu/HarshitaDandu_Cyber_Security-/blob/main/Basic-Homelab.md" class="btn" target="_blank">Github</a>
+            <button class="btn details-btn">Details</button>
+          </div>
+        </div>
+        <div class="card-back">
+          <p>Built an isolated VirtualBox lab with Windows 10 and Kali Linux to safely test malware, security tools, and attack simulations. Configured secure networking, validated downloads, and implemented snapshot management for safe and repeatable cybersecurity experiments.</p>
+          <div class="buttons">
+            <a href="https://github.com/harshidandu/HarshitaDandu_Cyber_Security-/blob/main/Basic-Homelab.md" class="btn" target="_blank">Github</a>
+            <button class="btn back-btn">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card card5">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="./assets/MalwareAnalysisesized.png" alt="Card Image" />
+          <h2>Malware Analysis Lab</h2>
+          <div class="buttons">
+            <a href="https://github.com/harshidandu/HarshitaDandu_Cyber_Security-/blob/main/Malware-Analysis-Project.md" class="btn" target="_blank">Github</a>
+            <button class="btn details-btn">Details</button>
+          </div>
+        </div>
+        <div class="card-back">
+          <p>A cybersecurity project focused on analyzing malicious software through static and dynamic techniques within a secure virtual environment. Utilized tools like Flare VM, Wireshark, and VirtualBox to safely investigate malware behavior, detect attack patterns, and implement best practices in malware defense.</p>
+          <div class="buttons">
+            <a href="https://github.com/harshidandu/HarshitaDandu_Cyber_Security-/blob/main/Malware-Analysis-Project.md" class="btn" target="_blank">Github</a>
+            <button class="btn back-btn">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card card6">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="./assets/project6socenvio.png" alt="Card Image" />
+          <h2>Mini SOC Environment</h2>
+          <div class="buttons">
+            <a href="https://github.com/harshidandu/HarshitaDandu_Cyber_Security-/blob/main/Mini-SOC-Environment.md" class="btn" target="_blank">Github</a>
+            <button class="btn details-btn">Details</button>
+          </div>
+        </div>
+        <div class="card-back">
+          <p>In Progress: Currently building a mini SOC environment using the ELK Stack, Mythic C2, and OS Ticket.
+            Setting up alerts, dashboards, and automated ticketing workflows.
+            Simulating attacks to generate telemetry and practice detection techniques.
+            Gaining hands-on experience in SOC operations and incident response.</p>
+          <div class="buttons">
+            <a href="https://github.com/harshidandu/HarshitaDandu_Cyber_Security-/blob/main/Mini-SOC-Environment.md" class="btn" target="_blank">Github</a>
+            <button class="btn back-btn">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Flip the card when "Details" is clicked, and flip back on "Back"
+    document.querySelectorAll('.details-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const cardInner = this.closest('.card-inner');
+        cardInner.classList.add('flipped');
+      });
+    });
+
+    document.querySelectorAll('.back-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const cardInner = this.closest('.card-inner');
+        cardInner.classList.remove('flipped');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skills Animation - Option One</title>
+  <style>
+    .terminal-theme {
+  position: relative;
+  width: 90%;           /* or use a fixed value like 1200px */
+  max-width: 1200px;    /* optional: limits the width to a maximum */
+  margin: 0 auto;       /* centers the terminal window */
+  background-color: #1e1e1e;
+  border: 2px solid rgba(0, 255, 234, 0.4);
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 255, 234, 0.1);
+  padding: 20px;
+  font-family: 'Courier New', monospace;
+  color: #a6f6f6;
+  height: 700px;        /* fixed height */
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 14px;
+}
+
+
+
+
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      background-color: #333;
+      border-bottom: 1px solid #444;
+      margin: -20px -20px 20px -20px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      font-family: 'Segoe UI', sans-serif;
+      position: relative;
+      z-index: 20;
+    }
+    .terminal-header .btn {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .terminal-header .red { background-color: #ff5f56; }
+    .terminal-header .yellow { background-color: #ffbd2e; }
+    .terminal-header .green { background-color: #27c93f; }
+    .terminal-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+    .powershell-prompt {
+      color: #a6f6f6;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem; /* Reduced font size for prompt text */
+      margin-bottom: 1rem;
+      white-space: pre-wrap;
+      z-index: 20;
+      position: relative;
+    }
+    /* Blinking cursor effect for the prompt */
+    .powershell-prompt::after {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 1em;
+      background-color: #a6f6f6;
+      margin-left: 5px;
+      animation: blink 1s step-start infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+    /* On hover, the cursor jitters */
+    .powershell-prompt:hover::after {
+      animation: jitter 0.3s infinite;
+    }
+    @keyframes jitter {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(2px); }
+      100% { transform: translateX(0); }
+    }
+    /* Hide headings initially */
+    .skill-category {
+      font-size: 1rem;
+      margin-top: 2rem;
+      color: #a6f6f6;
+      font-weight: bold;
+      visibility: hidden;
+    }
+    /* Skill pills hidden until activated */
+    .skill-pill {
+      padding: 6px 12px;
+      background-color: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(0, 255, 234, 0.15);
+      border-radius: 14px;
+      font-size: 0.85rem;
+      margin: 4px;
+      color: #ffffff;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    .skill-pill.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .skill-pill:hover {
+      background-color: rgba(0, 255, 234, 0.1);
+      box-shadow: 0 0 6px rgba(0, 255, 234, 0.2);
+      transform: scale(1.05);
+      animation: pulseGlow 1.5s infinite alternate, rotatePulse 0.5s ease-in-out;
+    }
+    @keyframes pulseGlow {
+      from { box-shadow: 0 0 4px rgba(0, 255, 234, 0.2); }
+      to { box-shadow: 0 0 10px rgba(0, 255, 234, 0.5); }
+    }
+    @keyframes rotatePulse {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(2deg); }
+      100% { transform: rotate(0deg); }
+    }
+    .skill-boxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 0.6rem;
+    }
+    @media (max-width: 768px) {
+      .skill-boxes {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="experience-details-container">
+      <div class="about-containers">
+        <div class="details-container terminal-theme">
+          <div class="terminal-header">
+            <span class="btn red"></span>
+            <span class="btn yellow"></span>
+            <span class="btn green"></span>
+            <span class="terminal-title">macOS Terminal</span>
+          </div>
+          <pre class="powershell-prompt"><span id="typed-path"></span></pre>
+          <div class="skills-glow-container" id="skills-content">
+            <!-- Programming -->
+            <h2 class="skill-category" id="cat-programming">Programming</h2>
+            <div class="skill-boxes">
+              <span class="skill-pill cat-programming">C/C++</span>
+              <span class="skill-pill cat-programming">Bash</span>
+              <span class="skill-pill cat-programming">Python</span>
+              <span class="skill-pill cat-programming">Git</span>
+              <span class="skill-pill cat-programming">SQL</span>
+            </div>
+            <!-- OS & Virtualization -->
+            <h2 class="skill-category" id="cat-os">OS & Virtualization</h2>
+            <div class="skill-boxes">
+              <span class="skill-pill cat-os">Windows (10/Server)</span>
+              <span class="skill-pill cat-os">Linux (Kali, Ubuntu)</span>
+              <span class="skill-pill cat-os">VirtualBox</span>
+              <span class="skill-pill cat-os">macOS</span>
+            </div>
+            <!-- Security & Administration -->
+            <h2 class="skill-category" id="cat-security">Security & Administration</h2>
+            <div class="skill-boxes">
+              <span class="skill-pill cat-security">SIEM: Splunk & Wazuh</span>
+              <span class="skill-pill cat-security">SOAR: Shuffle & Tines</span>
+              <span class="skill-pill cat-security">EDR: Lima Charlie</span>
+              <span class="skill-pill cat-security">Active Directory & TheHive</span>
+              <span class="skill-pill cat-security">Log collection/analysis</span>
+              <span class="skill-pill cat-security">SHA-256 File Integrity</span>
+            </div>
+            <!-- Networking & Automation -->
+            <h2 class="skill-category" id="cat-network">Networking & Automation</h2>
+            <div class="skill-boxes">
+              <span class="skill-pill cat-network">Network Configuration</span>
+              <span class="skill-pill cat-network">Firewall Setup</span>
+              <span class="skill-pill cat-network">Playbook Design</span>
+              <span class="skill-pill cat-network">Slack/Email Integration</span>
+            </div>
+            <!-- Additional Tools -->
+            <h2 class="skill-category" id="cat-tools">Additional Tools</h2>
+            <div class="skill-boxes">
+              <span class="skill-pill cat-tools">Sysmon</span>
+              <span class="skill-pill cat-tools">Mimikatz</span>
+              <span class="skill-pill cat-tools">VM Snapshot Management</span>
+              <span class="skill-pill cat-tools">Network Diagramming</span>
+            </div>
+            <!-- Data Analysis & Visualization -->
+            <h2 class="skill-category" id="cat-data">Data Analysis & Visualization</h2>
+            <div class="skill-boxes">
+              <span class="skill-pill cat-data">Tableau</span>
+              <span class="skill-pill cat-data">Power BI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const promptText = "PS C:\\Users\\You\\portfolio\\skills>";
+      const promptOutput = document.getElementById("typed-path");
+
+      // Sequence for category animations (heading + associated skill pills)
+      const sequence = [
+        { id: "cat-programming", pills: ".cat-programming" },
+        { id: "cat-os", pills: ".cat-os" },
+        { id: "cat-security", pills: ".cat-security" },
+        { id: "cat-network", pills: ".cat-network" },
+        { id: "cat-tools", pills: ".cat-tools" },
+        { id: "cat-data", pills: ".cat-data" }
+      ];
+
+      // --- Function for the prompt (with typo/backspace effect, max 2 mistakes) ---
+      function typeTextWithErrors(element, text, speed, callback) {
+        element.textContent = "";
+        let i = 0;
+        let mistakeCount = 0;
+        function type() {
+          if (i < text.length) {
+            // Only simulate typo if fewer than 2 mistakes have occurred.
+            if (mistakeCount < 2 && Math.random() < 0.1) {
+              mistakeCount++;
+              const wrongChar = getRandomChar();
+              element.textContent += wrongChar;
+              setTimeout(() => {
+                // Remove wrong character.
+                element.textContent = element.textContent.slice(0, -1);
+                // Append the correct character.
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+              }, 300);
+            } else {
+              element.textContent += text.charAt(i);
+              i++;
+              setTimeout(type, speed);
+            }
+          } else {
+            if (callback) callback();
+          }
+        }
+        type();
+      }
+
+      // --- Simple typeText function for headings (no errors) ---
+      function typeTextSimple(element, text, speed, callback) {
+        element.textContent = "";
+        let i = 0;
+        const interval = setInterval(() => {
+          element.textContent += text.charAt(i);
+          i++;
+          if (i >= text.length) {
+            clearInterval(interval);
+            if (callback) callback();
+          }
+        }, speed);
+      }
+
+      // Helper: Get a random character for typos.
+      function getRandomChar() {
+        const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        return chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+
+      // Store each heading's full text in a data attribute.
+      sequence.forEach(item => {
+        const heading = document.getElementById(item.id);
+        heading.setAttribute("data-text", heading.textContent);
+      });
+
+      // Animate each category sequentially.
+      function animateSequence(index = 0) {
+        if (index >= sequence.length) return;
+        const heading = document.getElementById(sequence[index].id);
+        const originalText = heading.getAttribute("data-text");
+        // Make heading visible before typing.
+        heading.style.visibility = "visible";
+        heading.textContent = "";
+        // Type heading using the simple function (no errors) at 100ms per character.
+        typeTextSimple(heading, originalText, 100, () => {
+          // Once heading is complete, fade in its associated skill pills.
+          document.querySelectorAll(sequence[index].pills).forEach(el => {
+            el.classList.add("animate");
+          });
+          // Delay before moving on to the next category (1000ms).
+          setTimeout(() => animateSequence(index + 1), 1000);
+        });
+      }
+
+      // First, type out the prompt with error simulation at 30ms per character.
+      typeTextWithErrors(promptOutput, promptText, 30, () => {
+        animateSequence();
+      });
+    });
+  </script>
+</body>
+</html>

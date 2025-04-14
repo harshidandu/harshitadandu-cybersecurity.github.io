@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me - Retro Computer</title>
+
+  <!-- Retro Font -->
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: transparent;
+      font-family: 'VT323', monospace;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .background {
+      position: relative;
+      width: 100%;
+      height: auto;
+      background: url("./assets/retrocomputer.png") no-repeat center center;
+      background-size: contain;
+      aspect-ratio: 16 / 9;
+    }
+
+    .screen {
+      position: absolute;
+      top: 14%;
+      left: 29%;
+      width: 39%;
+      height: 46%;
+      background: transparent;
+      padding: 20px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      font-size: 1.7rem;
+      box-shadow: 0 0 20px #3a565c;
+      border-radius: 5px;
+      scroll-behavior: smooth;
+    }
+
+    /* Glowing terminal text */
+    .typing {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      color: #77DD77;
+      text-shadow: 0 0 5px #00FF00;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 24px;
+      background-color: #00FF00;
+      margin-left: 2px;
+      animation: blink 0.7s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% { background-color: transparent; }
+    }
+
+    /* Custom scrollbar */
+    .screen::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .screen::-webkit-scrollbar-thumb {
+      background-color: #00FF00;
+      border-radius: 4px;
+    }
+
+    .screen::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .screen {
+        top: 16%;
+        left: 26%;
+        width: 45%;
+        height: 48%;
+        font-size: 1.4rem;
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .screen {
+        top: 18%;
+        left: 22%;
+        width: 55%;
+        height: 50%;
+        font-size: 1.2rem;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="background">
+    <div class="screen" id="screen">
+      <div id="typingText" class="typing"></div><div class="cursor"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Typing Sound -->
+<audio id="typeSound" src="https://cdn.pixabay.com/download/audio/2022/10/04/audio_5482fb7591.mp3?filename=mechanical-keyboard-typing-110789.mp3"></audio>
+
+<script>
+const text = `Decrypting My Journey...
+
+In cybersecurity, effective problem solving is paramount—there’s no true cybersecurity without it, and no problem solving without a creative spark.
+
+I am committed to melding creativity with logic. With an unending drive to innovate and a unique, creative-yet-logical approach to tackling challenges, I strive to blend technical insight with creative thinking to create efficient solutions. You can find me at my happiest when I'm learning, creating, and exploring new ideas.`;
+
+const typingText = document.getElementById('typingText');
+const screen = document.getElementById('screen');
+const typeSound = document.getElementById('typeSound');
+typeSound.volume = 0.2;
+let index = 0;
+
+function type() {
+  if (index < text.length) {
+    typingText.innerHTML += text.charAt(index);
+
+    // Play sound if not newline or space
+    if (text.charAt(index) !== '\n' && text.charAt(index) !== ' ') {
+      typeSound.currentTime = 0;
+      typeSound.play();
+    }
+
+    // Auto-scroll to bottom as text grows
+    screen.scrollTop = screen.scrollHeight;
+
+    index++;
+    setTimeout(type, 30); // typing speed
+  } else {
+    typeSound.pause();
+  }
+}
+
+// Start typing automatically
+window.onload = type;
+</script>
+
+</body>
+</html>
